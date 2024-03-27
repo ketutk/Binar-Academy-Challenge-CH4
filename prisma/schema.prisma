@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users{
+  id        String       @id @default(uuid())
+  name      String 
+  email     String  @unique
+  password  String
+  bank_accounts BankAccounts[]
+  profiles Profiles?
+  @@map("users")
+}
+
+model BankAccounts{
+  id        String       @id @default(uuid())
+  user_id String
+  user Users @relation(fields: [user_id],references: [id])
+  bank_name String
+  bank_account_number String
+  balance Int
+  payment_sent Transactions[] @relation("source_account")
+  payment_received Transactions[] @relation("destination_account")
+  @@map("bank_accounts")
+}
+
+model Profiles{
+  id        String       @id @default(uuid())
+  user_id String @unique
+  user Users @relation(fields: [user_id],references: [id])
+  identity_type String
+  identity_number String
+  address String
+  @@map("profiles")
+}
+
+model Transactions{
+  id        String       @id @default(uuid())
+  source_account_id String
+  destination_account_id String
+  source_account BankAccounts @relation("source_account",fields: [source_account_id],references: [id])
+  destination_account BankAccounts @relation("destination_account",fields: [destination_account_id],references: [id])
+  amount Int
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  @@map("transactions")
+}

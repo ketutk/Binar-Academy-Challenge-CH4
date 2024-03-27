@@ -1,0 +1,422 @@
+{
+	"info": {
+		"_postman_id": "6cc4cc04-86fc-4bf7-98b5-2c00b5c3f2a1",
+		"name": "Binar-Challenge-CH4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23419236"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "registerUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Ketut Krisna\",\r\n    \"email\":\"krisna@gmail.com\",\r\n    \"password\":\"krisna123\",\r\n    \"identity_type\":\"KTP\",\r\n    \"identity_number\":\"36032659976569\",\r\n    \"address\":\"IKN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						},
+						"description": "**Mendaftar user**"
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/api/v1/users?page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "**Mendapatkan list users dilengkapi dengan pagination**"
+					},
+					"response": []
+				},
+				{
+					"name": "loginUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"ketut@gmail.com\",\r\n    \"password\":\"ketut123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						},
+						"description": "**Login user untuk mendapatkan token**"
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/api/v1/users/a6b43661-04d2-48b2-8680-dc50df41b8a6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"a6b43661-04d2-48b2-8680-dc50df41b8a6"
+							]
+						},
+						"description": "**Mendapatkan detail user by Id**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "createAccount (Bearer token)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bank_name\":\"Bank Central Asia\",\r\n    \"bank_account_number\":\"1234566587\",\r\n    \"balance\":1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/api/v1/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"accounts"
+							]
+						},
+						"description": "**User dapat membuat akun**"
+					},
+					"response": []
+				},
+				{
+					"name": "getAccounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/api/v1/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"accounts"
+							]
+						},
+						"description": "**Mendapatkan daftar akun dengan pagination**"
+					},
+					"response": []
+				},
+				{
+					"name": "getMyAccounts(Bearer token)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/api/v1/accounts/my",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"my"
+							]
+						},
+						"description": "**Mendapatkan daftar akun pribadi yang dimiliki oleh user**"
+					},
+					"response": []
+				},
+				{
+					"name": "getAccountById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/api/v1/accounts/e26fa07a-92bb-45e6-aa87-66bd010046d9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"e26fa07a-92bb-45e6-aa87-66bd010046d9"
+							]
+						},
+						"description": "**Mendapatkan detail akun berdasarkan Id**"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE2YjQzNjYxLTA0ZDItNDhiMi04NjgwLWRjNTBkZjQxYjhhNiIsIm5hbWUiOiJLZXR1dCBLcmlzbmEiLCJlbWFpbCI6ImtldHV0QGdtYWlsLmNvbSIsImlhdCI6MTcxMTQ2NjgxMywiZXhwIjoxNzExNTUzMjEzfQ.Gfn5CSTq5j3U6wtIC_B5E9SOMSCZek9CjQWTSvCXHI4",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "addTransactions(Bearer token)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // source_account_id harus milik user yang sedang login\r\n    \"source_account_id\":\"e26fa07a-92bb-45e6-aa87-66bd010046d9\",\r\n    \"destination_account_id\":\"869f99fa-c915-4e73-944d-9fbf515dbb04\",\r\n    \"amount\":9000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						},
+						"description": "**Membuat transaksi antara dua akun**"
+					},
+					"response": []
+				},
+				{
+					"name": "getMyTransactions(Bearer token)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/api/v1/transactions/my",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"transactions",
+								"my"
+							]
+						},
+						"description": "**Mendapatkan daftar transaksi pribadi yang dimiliki user**"
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						},
+						"description": "**Mendapatkan daftar transaksi dengan pagination**"
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactionByid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/api/v1/transactions/96fcd425-953c-4da9-9b8c-4c8f9ac10a26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"api",
+								"v1",
+								"transactions",
+								"96fcd425-953c-4da9-9b8c-4c8f9ac10a26"
+							]
+						},
+						"description": "**Mendapatkan detail transaksi berdasarkan Id**"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE2YjQzNjYxLTA0ZDItNDhiMi04NjgwLWRjNTBkZjQxYjhhNiIsIm5hbWUiOiJLZXR1dCBLcmlzbmEiLCJlbWFpbCI6ImtldHV0QGdtYWlsLmNvbSIsImlhdCI6MTcxMTQ2NjgxMywiZXhwIjoxNzExNTUzMjEzfQ.Gfn5CSTq5j3U6wtIC_B5E9SOMSCZek9CjQWTSvCXHI4",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5555/api/v1/usersasdad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"v1",
+						"usersasdad"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
