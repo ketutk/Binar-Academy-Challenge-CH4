@@ -38,6 +38,9 @@ exports.registerUser = async (req) => {
           },
         },
       },
+      include: {
+        profiles: true,
+      },
     });
 
     // Buat token untuk akses
